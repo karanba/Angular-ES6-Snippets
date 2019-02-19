@@ -1,3 +1,4 @@
+'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
@@ -25,6 +26,18 @@ function activate(context) {
 	});
 
 	context.subscriptions.push(disposable);
+
+	let fileLinkDisposable = vscode.commands.registerCommand('extension.insertLink', ()=>{
+		vscode.window.showInformationMessage('Insert File Link Initiated.')
+	});
+
+	context.subscriptions.push(fileLinkDisposable);
+
+	let figureDisposable = vscode.commands.registerCommand('extension.insertFigure', ()=>{
+		vscode.window.showInformationMessage('Insert FigureTag Initiated.')
+	});
+
+	context.subscriptions.push(figureDisposable);
 }
 exports.activate = activate;
 
