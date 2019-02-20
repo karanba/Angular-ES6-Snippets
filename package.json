@@ -2,7 +2,21 @@
 	"name": "angularjs-es6-snippets",
 	"displayName": "AngularJS ES6 Snippets",
 	"description": "AngularJS snippets writen with ES6",
-	"version": "0.0.1",
+	"version": "1.0.0",
+	"publisher": "karanba",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/karanba/AngularJS-ES6-Snippets.git"
+	},
+	"bugs": {
+		"url": "https://github.com/karanba/AngularJS-ES6-Snippets/issues"
+	},
+	"homepage": "https://github.com/karanba/AngularJS-ES6-Snippets/blob/master/README.md",
+	"icon": "images/logo.png",
+	"galleryBanner": {
+		"color": "#96DFFF",
+		"theme": "light"
+	},
 	"engines": {
 		"vscode": "^1.31.0"
 	},
