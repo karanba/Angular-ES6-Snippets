@@ -1,10 +1,11 @@
 'use strict';
 const vscode = require('vscode');
 
+
 let insertText = (value) => {
 	let editor = vscode.window.activeTextEditor;
 
-	if(!editor){
+	if (!editor) {
 		vscode.window.showErrorMessage("Can't insert text");
 		return;
 	}
@@ -17,6 +18,15 @@ let insertText = (value) => {
 		editBuilder.replace(range, value);
 	});
 };
+
+
+let getImageTemplate = () => {
+	return vscode.workspace.getConfiguration("staticSiteHero")["imagePathTemplate"];	
+}
+
+let getFileTemplate = () => {
+	return vscode.workspace.getConfiguration("staticSiteHero")["filePathTemplate"];	;	
+}
 
 
 /**
@@ -35,15 +45,19 @@ function activate(context) {
 	let fileLinkDisposable = vscode.commands.registerCommand('extension.insertLink', () => {
 		let linkTypeList = ['File', 'Image'];
 
-		vscode.window.showQuickPick(linkTypeList, {placeHolder: 'Link Type'})
-		.then(result => {
-			insertText(result);
-		});
+		vscode.window.showQuickPick(linkTypeList, { placeHolder: 'Link Type' })
+			.then(result => {
+				if (result === 'File') {
+					insertText(getFileTemplate());
+				} else if (result === 'Image') {
+					insertText(getImageTemplate());
+				}
+			});
 	});
 
 	context.subscriptions.push(fileLinkDisposable);
 
-	let figureDisposable = vscode.commands.registerCommand('extension.insertFigure', ()=>{
+	let figureDisposable = vscode.commands.registerCommand('extension.insertFigure', () => {
 		vscode.window.showInformationMessage('Insert FigureTag Initiated.');
 	});
 
@@ -52,7 +66,7 @@ function activate(context) {
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() { }
 
 module.exports = {
 	activate,
