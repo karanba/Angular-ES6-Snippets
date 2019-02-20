@@ -10,14 +10,33 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:extension.insertLink",
+		"onCommand:extension.insertFigure"
 	],
 	"main": "./extension.js",
 	"contributes": {
-		"commands": [
+		"commands": [		
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "extension.insertLink",
+				"title": "Insert Markdown"
+			},
+			{
+				"command": "extension.insertFigure",
+				"title": "Insert HTML Figure"
+			}
+		],
+		"keybindings":[
+			{
+				"command": "extension.insertLink",
+				"key": "shift+ctrl+l",
+				"mac": "shift+cmd+l",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.insertFigure",
+				"key": "shift+ctrl+f",
+				"mac": "shift+cmd+f",
+				"when": "editorTextFocus"
 			}
 		]
 	},
