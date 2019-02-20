@@ -38,6 +38,7 @@ let updateTemplateWithDate = template => {
 
 	return template;
 }
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -72,12 +73,13 @@ function activate(context) {
 
 	context.subscriptions.push(figureDisposable);
 }
-exports.activate = activate;
+
 
 // this method is called when your extension is deactivated
 function deactivate() { }
 
 module.exports = {
 	activate,
-	deactivate
+	deactivate,
+	updateTemplateWithDate
 }
